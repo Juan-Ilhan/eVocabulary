@@ -1,7 +1,8 @@
 [![CI                                //continuous integration](https://github.com/Juan-Ilhan/eVocabulary/actions/workflows/tests.yml/badge.svg)](https://github.com/Juan-Ilhan/eVocabulary/actions/workflows/tests.yml)
 # eVocabulary
 
-Juan Ilhan, Tugce Gökcek 
+Juan Ilhan, Tugce Gökcek:
+
 
 Durch die zunehmende Digitalisierung an Schulen, sowie durch die Pandemie bedingte Lage erstellen wir eine Webseite, die Grundschülern dabei helfen soll Vokabeln einfacher digital zu lernen.
 
