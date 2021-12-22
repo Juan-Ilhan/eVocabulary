@@ -1,9 +1,10 @@
 package htw.berlin.webtech.service;
 
-import htw.berlin.webtech.persistence.PersonEntity;
-import htw.berlin.webtech.persistence.PersonRepository;
-import htw.berlin.webtech.web.api.Person;
-import htw.berlin.webtech.web.api.PersonManipulationRequest;
+import htw.berlin.webtech.persistence.KarteiEntity;
+import htw.berlin.webtech.persistence.KarteiRepository;
+import htw.berlin.webtech.web.api.Kartei;
+import htw.berlin.webtech.web.api.KarteiManipulationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class KarteiService {
-
+    @Autowired
     private final KarteiRepository karteiRepository;
 
     public KarteiService(KarteiRepository karteiRepository) {
@@ -19,8 +20,8 @@ public class KarteiService {
     }
     public List<Kartei>findAll(){
 
-        List<KarteiEntity> Karteikarten = karteiRepository.findAll();
-        return karteikarten.stream()
+        List<KarteiEntity> karteikarten = karteiRepository.findAll();
+        return karteikarten.stream() //Kartei vlt klein geschrieben?!
                 .map(this::transformEntity)
                 .collect(Collectors.toList());
 
@@ -34,7 +35,7 @@ public class KarteiService {
 
     public Kartei create(KarteiManipulationRequest request){
 
-        var karteiEntity = new KarteiEntity(request.getFirstName(), request.getLastName(), request.isVaccinated());
+        var karteiEntity = new KarteiEntity(request.getEnglishWord(), request.getGermanWord(), request.getDefinition());
 
         karteiEntity = karteiRepository.save(karteiEntity);
         return transformEntity(karteiEntity);
@@ -49,10 +50,10 @@ public class KarteiService {
         }
 
         var karteiEntity= karteiEntityOptional.get();
-        karteiEntity.setFirstName(request.getFirstName());
-        karteiEntity.setLastName(request.getLastName());
-        karteiEntity.setVaccinated(request.isVaccinated());
-        karteiEntity = karteiRepository.save(personEntity);
+        karteiEntity.setEnglishWord(request.getEnglishWord());
+        karteiEntity.setGermanWord(request.getGermanWord());
+        karteiEntity.setDefinition(request.getDefinition());
+        karteiEntity = karteiRepository.save(karteiEntity);
 
         return transformEntity(karteiEntity);
     }
@@ -71,9 +72,9 @@ public class KarteiService {
         return new Kartei(
 
                 karteiEntity.getId(),
-                karteiEntity.getFirstName(),
-                karteiEntity.getLastName(),
-                karteiEntity.isVaccinated()
+                karteiEntity.getEnglishWord(),
+                karteiEntity.getGermanWord(),
+                karteiEntity.getDefinition()
         );
     }
 }

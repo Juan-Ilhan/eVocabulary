@@ -9,7 +9,7 @@ public class KarteiEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "german_word", nullable = false)
     private String germanWord;
@@ -20,18 +20,26 @@ public class KarteiEntity {
     @Column(name = "definition")
     private String definition;
 
-    public KarteiEntity(long id, String germanWord, String englishWord, String definition) {
+    public KarteiEntity(Long id, String germanWord, String englishWord, String definition) {
         this.id = id;
         this.germanWord = germanWord;
         this.englishWord = englishWord;
         this.definition = definition;
     }
 
-    public long getId() {
+    public KarteiEntity(String englishWord, String germanWord, String definition) {
+    this(null,englishWord,germanWord,definition);
+    }
+
+    public KarteiEntity() {
+        this(null,null,null,null);
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

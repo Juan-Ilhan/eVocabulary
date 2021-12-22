@@ -1,8 +1,8 @@
 package htw.berlin.webtech.web;
 
-import htw.berlin.webtech.service.PersonService;
-import htw.berlin.webtech.web.api.Person;
-import htw.berlin.webtech.web.api.PersonManipulationRequest;
+import htw.berlin.webtech.service.KarteiService;
+import htw.berlin.webtech.web.api.Kartei;
+import htw.berlin.webtech.web.api.KarteiManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 public class KarteiRestController {
 
-    private final PersonService personService;
+    private final KarteiService karteiService;
 
-    public PersonRestController(PersonService personService) {
-        this.personService = personService;
+    public KarteiRestController(KarteiService karteiService) {
+        this.karteiService = karteiService;
 
     }
 
@@ -24,8 +24,8 @@ public class KarteiRestController {
 
 
     @GetMapping(path = "/api/v1/karteikarten")
-    public ResponseEntity<List<Person>> fetchPersons() {
-        return ResponseEntity.ok(personService.findAll());
+    public ResponseEntity<List<Kartei>> fetchKartei() {
+        return ResponseEntity.ok(karteiService.findAll());
 
     }
 
@@ -39,9 +39,9 @@ public class KarteiRestController {
     }
 
     @PostMapping(path = "/api/v1/karteikarten")
-    public ResponseEntity<Void> createPerson(@RequestBody KarteiManipulationRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createKartei(@RequestBody KarteiManipulationRequest request) throws URISyntaxException {
       var kartei = karteiService.create(request);
-        URI uri = new URI("/api/v1/persons/" + kartei.getId());
+        URI uri = new URI("/api/v1/karteikarten/" + kartei.getId());
       return ResponseEntity.created(uri).build();
     }
 

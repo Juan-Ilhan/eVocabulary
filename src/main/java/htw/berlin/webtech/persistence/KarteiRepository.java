@@ -8,8 +8,5 @@ import java.util.List;
 @Repository
 public interface KarteiRepository extends JpaRepository<KarteiEntity, Long> {
 
-    List<KarteiEntity> findAllByFirstName(String firstName);
-
-
 
 }
