@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedMethods("*")
                 .allowedOrigins(
                         "http://localhost:9000",
-                        "https://e-vocabulary.herokuapp.com"
+                        "https://e-vocabulary-frontend.herokuapp.com"
                 );
     }
 }
