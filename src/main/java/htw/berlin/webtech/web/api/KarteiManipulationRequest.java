@@ -1,24 +1,19 @@
 package htw.berlin.webtech.web.api;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 public class KarteiManipulationRequest {
 
-    private String englishWord;
+    @NotBlank(message = "Bitte mindestens einen Buchstaben eingeben.")
     private String germanWord;
+
+    @NotBlank(message = "Das Übersetzungsfeld darf nicht leer bleiben.")
+    private String englishWord;
+
+    @NotBlank(message = "Das Definitionsfeld darf nicht leer bleiben.")
     private String definition;
 
-    public KarteiManipulationRequest(String englishWord, String germanWord, String definition) {
-        this.englishWord = englishWord;
-        this.germanWord = germanWord;
-        this.definition = definition;
-    }
-
-    public KarteiManipulationRequest(){
-
-    }
-
+    public KarteiManipulationRequest(){}
 
     public String getEnglishWord() {
         return englishWord;
