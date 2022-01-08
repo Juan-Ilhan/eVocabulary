@@ -40,9 +40,15 @@ public class KarteiRestController {
 
     @PostMapping(path = "/api/v1/karteikarten")
     public ResponseEntity<Void> createKartei(@RequestBody KarteiManipulationRequest request) throws URISyntaxException {
-      var kartei = karteiService.create(request);
-        URI uri = new URI("/api/v1/karteikarten/" + kartei.getId());
-      return ResponseEntity.created(uri).build();
+        var valid = validate(request);
+        if(valid){
+            var kartei = karteiService.create(request);
+            URI uri = new URI("/api/v1/karteikarten/" + kartei.getId());
+            return ResponseEntity.created(uri).build();
+        }
+        else{
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PutMapping(path = "/api/v1/karteikarten/{id}")
@@ -56,6 +62,16 @@ public class KarteiRestController {
     public ResponseEntity<Void> deleteKartei(@PathVariable Long id) {
         boolean successful = karteiService.deleteById(id);
         return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
+    private boolean validate(KarteiManipulationRequest request){
+
+        return request.getGermanWord() != null
+                && !request.getGermanWord().isBlank()
+                && request.getEnglishWord() != null
+                && !request.getEnglishWord().isBlank()
+                && request.getDefinition() != null
+                && !request.getDefinition().isBlank();
     }
 
 }
