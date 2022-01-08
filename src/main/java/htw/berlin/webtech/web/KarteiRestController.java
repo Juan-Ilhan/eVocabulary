@@ -6,6 +6,7 @@ import htw.berlin.webtech.web.api.KarteiManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -39,7 +40,7 @@ public class KarteiRestController {
     }
 
     @PostMapping(path = "/api/v1/karteikarten")
-    public ResponseEntity<Void> createKartei(@RequestBody KarteiManipulationRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createKartei(@Valid @RequestBody KarteiManipulationRequest request) throws URISyntaxException {
         var valid = validate(request);
         if(valid){
             var kartei = karteiService.create(request);

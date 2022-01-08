@@ -1,5 +1,8 @@
 package htw.berlin.webtech.web.api;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class KarteiManipulationRequest {
 
     private String englishWord;
@@ -15,6 +18,7 @@ public class KarteiManipulationRequest {
     public KarteiManipulationRequest(){
 
     }
+
 
     public String getEnglishWord() {
         return englishWord;
