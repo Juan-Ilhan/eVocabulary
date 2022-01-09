@@ -20,7 +20,7 @@ Unsere Anwendung bietet folgende Use Cases:
 
 •Dem Nutzer wird ermöglicht die angelegten Karteikarten zu lernen, indem die Übersetzung erst durch das Betätigen des Untermenüs sichtbar wird.
 
-•Auf der "Über uns" Seite kann die hintergrund Idee der Website entnommen werden.
+•Auf der "Über uns" Seite kann die Kernidee der Website entnommen werden.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
