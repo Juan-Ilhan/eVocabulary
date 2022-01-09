@@ -16,7 +16,7 @@ Unsere Anwendung bietet folgende Use Cases:
 
 •Einem User ist es möglich ausgesprochen leicht mehrere Karteikarten zu erstellen.
 
-•Unter Eingabe fehlerhafter Daten, während der erstellung der Karteikarte, ist es möglich diese zurückzusetzen.
+•Unter Eingabe fehlerhafter Daten, während der Erstellung der Karteikarte, ist es möglich diese zurückzusetzen.
 
 •Dem User wird ermöglicht die angelegten Karteikarten zu lernen, indem die Übersetzung erst durch das Betätigen des Dropdown menus sichtbar wird.
 
